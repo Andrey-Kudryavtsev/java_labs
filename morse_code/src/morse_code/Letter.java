@@ -2,9 +2,9 @@ package morse_code;
 
 import java.util.Objects;
 
-public class Letter
+public class Letter implements Comparable<Object>
 {
-    private char ch;
+    private final char ch;
     private int freq;
 
     public Letter(char ch)
@@ -25,7 +25,8 @@ public class Letter
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Letter other = (Letter) o;
@@ -36,5 +37,15 @@ public class Letter
     @Override
     public int hashCode() {
         return Objects.hash(ch);
+    }
+
+    @Override
+    public int compareTo(Object o) throws NullPointerException, ClassCastException
+    {
+        if (this == o) return 0;
+        if (o == null) throw new NullPointerException();
+        if (getClass() != o.getClass()) throw new ClassCastException();
+        Letter other = (Letter) o;
+        return Integer.compare(freq, other.freq);
     }
 }
