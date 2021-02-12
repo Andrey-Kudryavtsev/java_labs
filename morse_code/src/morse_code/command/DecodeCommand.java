@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Scanner;
 
 public class DecodeCommand implements ICommand
 {
@@ -30,67 +31,73 @@ public class DecodeCommand implements ICommand
         try
         {
             reader = new FileReader(filename);
+            Scanner scanner = new Scanner(reader);
             writer = new FileWriter("src/out/out_decode.txt");
             int spaceAmount = 0;
-            HashSet<Letter> set = new HashSet<>();
+            HashSet<Letter> stat = new HashSet<>();
             StringBuilder word = new StringBuilder();
             StringBuilder code = new StringBuilder();
             State state = State.READ_CODE;
-            while (reader.ready())
+
+            while(scanner.hasNextLine())
             {
-                char symbol = (char) reader.read();
-                if (state == State.READ_CODE) // если считываем код одной буквы
+                String buf = scanner.nextLine() + '\n';
+                for (int i = 0; i < buf.length(); i++)
                 {
-                    if (symbol == '.' || symbol == '-') // если точка или тире, то добавляем символ к коду
+                    char symbol = buf.charAt(i);
+                    if (state == State.READ_CODE) // если считываем код одной буквы
                     {
-                        code.append(symbol);
-                    } else if (symbol == ' ') // если пробел, то проверяем, сколько их
+                        if (symbol == '.' || symbol == '-') // если точка или тире, то добавляем символ к коду
+                        {
+                            code.append(symbol);
+                        } else if (symbol == ' ') // если пробел, то проверяем, сколько их
+                        {
+                            spaceAmount++;
+                            state = State.CHECK_SPACES;
+                        }
+                    } else if (state == State.CHECK_SPACES)
                     {
-                        spaceAmount++;
-                        state = State.CHECK_SPACES;
-                    }
-                } else if (state == State.CHECK_SPACES)
-                {
-                    if (symbol == ' ')
-                    {
-                        spaceAmount++;
-                        continue;
-                    }
+                        if (symbol == ' ')
+                        {
+                            spaceAmount++;
+                            continue;
+                        }
 
-                    if (spaceAmount == 1) // если один пробел, то считали букву, добавляем ее к слову
-                    {
-                        Character letter = morseAlphabet.decode(code.toString());
-                        word.append(letter);
-                        if (Character.isLetter(letter)) set.add(new Letter(letter));
+                        if (spaceAmount == 1) // если один пробел, то считали букву, добавляем ее к слову
+                        {
+                            char letter = morseAlphabet.decode(code.toString());
+                            word.append(letter);
+                            if (Character.isLetter(letter)) stat.add(new Letter(letter));
 
-                        code.setLength(0);
-                        code.append(symbol);
+                            code.setLength(0);
+                            code.append(symbol);
 
-                        spaceAmount = 0;
-                        state = State.READ_CODE;
-                    } else if (spaceAmount == 3) // если три пробела, то считали слово, записываем его в файл
-                    {
-                        Character letter = morseAlphabet.decode(code.toString());
-                        word.append(letter);
-                        if (Character.isLetter(letter)) set.add(new Letter(letter));
+                            spaceAmount = 0;
+                            state = State.READ_CODE;
+                        } else if (spaceAmount == 3) // если три пробела, то считали слово, записываем его в файл
+                        {
+                            char letter = morseAlphabet.decode(code.toString());
+                            word.append(letter);
+                            if (Character.isLetter(letter)) stat.add(new Letter(letter));
 
-                        writer.write(word.toString() + ' ');
-                        word.setLength(0);
+                            writer.write(word.toString() + ' ');
+                            word.setLength(0);
 
-                        code.setLength(0);
-                        code.append(symbol);
+                            code.setLength(0);
+                            code.append(symbol);
 
-                        spaceAmount = 0;
-                        state = State.READ_CODE;
+                            spaceAmount = 0;
+                            state = State.READ_CODE;
+                        }
                     }
                 }
             }
-            Character letter = morseAlphabet.decode(code.toString());
+            char letter = morseAlphabet.decode(code.toString());
             word.append(letter);
-            if (Character.isLetter(letter)) set.add(new Letter(letter));
+            if (Character.isLetter(letter)) stat.add(new Letter(letter));
 
-            writer.write(word.toString() + ' ');
-            ICommand.writeFreqToFile(set, "freq_decode.txt");
+            writer.write(word.toString());
+            ICommand.writeFreqToFile(stat, "freq_decode.txt");
         }
         catch (IOException e)
         {
