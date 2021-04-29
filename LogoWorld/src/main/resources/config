@@ -1,0 +1,5 @@
+INIT=ru.nsu.kudryavtsev.andrey.commands.InitCommand
+MOVE=ru.nsu.kudryavtsev.andrey.commands.MoveCommand
+DRAW=ru.nsu.kudryavtsev.andrey.commands.DrawCommand
+WARD=ru.nsu.kudryavtsev.andrey.commands.WardCommand
+TELEPORT=ru.nsu.kudryavtsev.andrey.commands.TeleportCommand
