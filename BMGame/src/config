@@ -1,0 +1,10 @@
+MOVE=ru.nsu.kudryavtsev.andrey.commands.MoveCommand
+PLANT=ru.nsu.kudryavtsev.andrey.commands.PlantCommand
+EXPLODE=ru.nsu.kudryavtsev.andrey.commands.ExplodeCommand
+CLEAR=ru.nsu.kudryavtsev.andrey.commands.ClearExplosionCommand
+PLAY=ru.nsu.kudryavtsev.andrey.commands.PlayCommand
+ABOUT=ru.nsu.kudryavtsev.andrey.commands.AboutCommand
+SCORE=ru.nsu.kudryavtsev.andrey.commands.HighScoresCommand
+MENU=ru.nsu.kudryavtsev.andrey.commands.MenuCommand
+EXIT=ru.nsu.kudryavtsev.andrey.commands.ExitCommand
+NAME=ru.nsu.kudryavtsev.andrey.commands.SetNameCommand
