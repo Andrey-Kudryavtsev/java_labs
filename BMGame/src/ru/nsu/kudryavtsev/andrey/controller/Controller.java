@@ -5,5 +5,4 @@ import ru.nsu.kudryavtsev.andrey.commands.Task;
 public interface Controller
 {
     void waitForInput();
-//    void addTask(Task task);
 }

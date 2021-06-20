@@ -27,7 +27,7 @@ public class GraphicController implements Controller, KeyListener, ActionListene
     @Override
     public void waitForInput()
     {
-//        while (model.isRunning()){}
+        while (model.isRunning()){}
     }
 
     @Override

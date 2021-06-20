@@ -1,20 +1,12 @@
 package ru.nsu.kudryavtsev.andrey.view.graphicView;
 
-import ru.nsu.kudryavtsev.andrey.commands.Command;
-import ru.nsu.kudryavtsev.andrey.commands.Task;
 import ru.nsu.kudryavtsev.andrey.controller.GraphicController;
 import ru.nsu.kudryavtsev.andrey.enums.GameState;
-import ru.nsu.kudryavtsev.andrey.factory.CommandFactory;
 import ru.nsu.kudryavtsev.andrey.model.GameModel;
-import ru.nsu.kudryavtsev.andrey.scoreUtils.ScoreNode;
 import ru.nsu.kudryavtsev.andrey.view.View;
 import ru.nsu.kudryavtsev.andrey.view.graphicView.panels.*;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 public class GraphicView extends JFrame implements View
 {

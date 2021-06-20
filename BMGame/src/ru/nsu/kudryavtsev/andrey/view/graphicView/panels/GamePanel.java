@@ -1,16 +1,10 @@
 package ru.nsu.kudryavtsev.andrey.view.graphicView.panels;
 
-import ru.nsu.kudryavtsev.andrey.commands.Command;
-import ru.nsu.kudryavtsev.andrey.commands.Task;
-import ru.nsu.kudryavtsev.andrey.factory.CommandFactory;
 import ru.nsu.kudryavtsev.andrey.field.Field;
-import ru.nsu.kudryavtsev.andrey.model.GameModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class GamePanel extends JPanel
 {

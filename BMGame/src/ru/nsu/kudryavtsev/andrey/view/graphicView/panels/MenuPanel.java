@@ -1,13 +1,9 @@
 package ru.nsu.kudryavtsev.andrey.view.graphicView.panels;
 
-import ru.nsu.kudryavtsev.andrey.commands.Command;
-import ru.nsu.kudryavtsev.andrey.commands.Task;
-import ru.nsu.kudryavtsev.andrey.factory.CommandFactory;
 import ru.nsu.kudryavtsev.andrey.view.graphicView.GridBagHelper;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MenuPanel extends JPanel

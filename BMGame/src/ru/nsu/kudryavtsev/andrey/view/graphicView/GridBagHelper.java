@@ -1,6 +1,3 @@
-// com/porty/swing/GridBagHelper.java
-// Вспомогательный класс, позволяющий писать
-// качественный код для расположения GridBagLayout
 package ru.nsu.kudryavtsev.andrey.view.graphicView;
 
 import javax.swing.*;

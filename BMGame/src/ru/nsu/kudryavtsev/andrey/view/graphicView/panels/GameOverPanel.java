@@ -1,6 +1,5 @@
 package ru.nsu.kudryavtsev.andrey.view.graphicView.panels;
 
-import ru.nsu.kudryavtsev.andrey.factory.CommandFactory;
 import ru.nsu.kudryavtsev.andrey.view.graphicView.GridBagHelper;
 
 import javax.swing.*;

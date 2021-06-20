@@ -2,7 +2,6 @@ package ru.nsu.kudryavtsev.andrey.controller;
 
 import ru.nsu.kudryavtsev.andrey.commands.Command;
 import ru.nsu.kudryavtsev.andrey.commands.Task;
-import ru.nsu.kudryavtsev.andrey.enums.GameState;
 import ru.nsu.kudryavtsev.andrey.factory.CommandFactory;
 import ru.nsu.kudryavtsev.andrey.inputHandler.InputHandler;
 import ru.nsu.kudryavtsev.andrey.model.GameModel;

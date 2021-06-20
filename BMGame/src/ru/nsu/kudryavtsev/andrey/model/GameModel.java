@@ -6,7 +6,6 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import ru.nsu.kudryavtsev.andrey.commands.HighScoresCommand;
 import ru.nsu.kudryavtsev.andrey.commands.Task;
 import ru.nsu.kudryavtsev.andrey.enums.Bonus;
 import ru.nsu.kudryavtsev.andrey.enums.GameState;
@@ -84,21 +83,7 @@ public class GameModel implements Runnable
                 else
                     return;
         }
-
         highScores.add(scoreNode);
-//        if (highScores.size() > 10)
-//        {
-//            int i = 0;
-//            for (ScoreNode node : highScores)
-//            {
-//                if (i == highScores.size() - 1)
-//                {
-//                    highScores.remove(node);
-//                    break;
-//                }
-//                i++;
-//            }
-//        }
 
         PrintWriter writer = null;
         try
@@ -398,14 +383,6 @@ public class GameModel implements Runnable
         }
     }
 
-//    public int registerPlayer() // TODO: не работает при добавлении больше одного игрока
-//    {
-//        int ID = IDGiver.getFreeId();
-//        players[ID] = new HumanPlayer(ID, 0, 0);
-////        field.setTile(0, 0, TileType.PLAYER);
-//        return ID;
-//    }
-
     private void addHuman()
     {
         players[0] = new HumanPlayer(IDGiver.getFreeId(),0, 0);
@@ -466,7 +443,6 @@ public class GameModel implements Runnable
         {
             player.kill();
             field.setTile(oldX, oldY, TileType.FLOOR);
-//            checkGameOver();
             return;
         }
         field.returnTile(oldX, oldY);
@@ -518,7 +494,6 @@ public class GameModel implements Runnable
                 {
                     player.kill();
                     players[ownerID].addScore(Bonus.KILL.points()); // добавляем очки за убийство игроку, поставившему бомбу
-//                    checkGameOver();
                     break; // больше игроков на этой клетке не ищем
                 }
             }
@@ -542,7 +517,6 @@ public class GameModel implements Runnable
                 {
                     player.kill();
                     players[ownerID].addScore(Bonus.KILL.points());
-//                    checkGameOver();
                     break;
                 }
             }

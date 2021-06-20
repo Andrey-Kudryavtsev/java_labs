@@ -17,15 +17,11 @@ public class ScorePanel extends JPanel
     public ScorePanel(ActionListener actionListener)
     {
         setLayout(new GridBagLayout());
-//        GridBagHelper helper = new GridBagHelper();
         setBackground(new Color(250, 150, 20));
 
         // add title
         title = new JLabel("BOMBERMAN");
         title.setFont(new Font("SERIF", Font.BOLD, 30));
-//        add(title, helper.get());
-//        helper.nextRow();
-//        helper.gapTop(80);
 
         // add back button
         backButton = new JButton("BACK");
